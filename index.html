@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HUNTER TECH DOWNLOADER</title>
+  <link rel="manifest" href="manifest.json" />
   <style>
     body {
       margin: 0;
@@ -66,18 +67,36 @@
       border-radius: 8px;
     }
 
+    .video img {
+      width: 100%;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
     .video h3 {
-      margin: 0 0 10px;
+      margin: 10px 0;
       color: #00bfff;
+      font-size: 1.2em;
+    }
+
+    .video p {
+      margin: 5px 0;
+      color: #bbb;
+      font-size: 0.9em;
     }
 
     .video a {
+      display: inline-block;
+      margin: 5px 10px 0 0;
       color: #ffffff;
       text-decoration: none;
+      background-color: #00bfff;
+      padding: 5px 10px;
+      border-radius: 4px;
     }
 
     .video a:hover {
-      text-decoration: underline;
+      background-color: #0099cc;
     }
   </style>
 </head>
@@ -93,7 +112,7 @@
     async function searchVideos() {
       const query = document.getElementById('searchInput').value;
       const resultsDiv = document.getElementById('results');
-      resultsDiv.innerHTML = 'Searching...';
+      resultsDiv.innerHTML = '<p>Searching...</p>';
 
       try {
         const response = await fetch(`https://casper-tech-apis.vercel.app/api/search/youtube?query=${encodeURIComponent(query)}`);
@@ -104,17 +123,19 @@
           const videoDiv = document.createElement('div');
           videoDiv.className = 'video';
           videoDiv.innerHTML = `
+            <img src="${video.thumbnail}" alt="${video.title}" />
             <h3>${video.title}</h3>
-            <a href="${video.url}" target="_blank">Watch / Download</a>
+            <p>Duration: ${video.duration}</p>
+            <a href="${video.url}&format=mp4" target="_blank">Download MP4</a>
+            <a href="${video.url}&format=mp3" target="_blank">Download MP3</a>
           `;
           resultsDiv.appendChild(videoDiv);
         });
       } catch (error) {
-        resultsDiv.innerHTML = 'Error fetching videos. Please try again.';
+        resultsDiv.innerHTML = '<p style="color: #ff6347;">Error fetching videos. Please try again.</p>';
         console.error(error);
       }
     }
   </script>
 </body>
-  </html>
-  
+</html>
