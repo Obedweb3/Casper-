@@ -3,23 +3,23 @@ import { Server, Download, Shield, Zap, Users, Headphones } from 'lucide-react';
 
 export default function Home() {
   return (
-    <>
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="pt-20 pb-16 px-4 min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="backdrop-blur-md bg-white/10 rounded-3xl p-8 md:p-12 max-w-4xl mx-auto border border-white/20">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Welcome to <span className="text-blue-400">OBED TECH KENYA</span>
+      <section className="pt-32 pb-20 px-4 min-h-screen flex items-center justify-center">
+        <div className="text-center max-w-4xl mx-auto">
+          <div className="content-section p-8 md:p-12 shadow-2xl">
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-6">
+              Welcome to <span className="text-blue-600">OBED TECH KENYA</span>
             </h1>
-            <p className="text-xl text-gray-200 max-w-3xl mx-auto mb-8 leading-relaxed">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed">
               Your trusted partner for cutting-edge web hosting and social media downloader solutions. 
               Empowering businesses and creators across Kenya with innovative, reliable technology.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-              <button className="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 font-semibold hover:scale-105">
+              <button className="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 font-semibold">
                 Get Started
               </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-gray-900 transition-all duration-300 font-semibold hover:scale-105">
+              <button className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg hover:border-blue-500 hover:text-blue-600 transition-all duration-300 font-semibold">
                 Learn More
               </button>
             </div>
@@ -27,17 +27,19 @@ export default function Home() {
         </div>
       </section>
 
-      <Quote />
+      <div className="px-4">
+        <Quote />
+      </div>
 
       {/* Features Grid */}
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="backdrop-blur-md bg-white/95 rounded-3xl p-8 md:p-12 shadow-2xl">
+          <div className="content-section p-8 md:p-12">
             <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-16">Why Choose OBED TECH?</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Web Hosting Card */}
-              <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 hover:transform hover:scale-105 border border-gray-100">
+              <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 border border-gray-100">
                 <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
                   <Server className="w-7 h-7 text-blue-600" />
                 </div>
@@ -62,7 +64,7 @@ export default function Home() {
               </div>
 
               {/* Social Media Downloader Card */}
-              <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 hover:transform hover:scale-105 border border-gray-100">
+              <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 border border-gray-100">
                 <div className="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-4">
                   <Download className="w-7 h-7 text-green-600" />
                 </div>
@@ -87,7 +89,7 @@ export default function Home() {
               </div>
 
               {/* Support Card */}
-              <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 hover:transform hover:scale-105 border border-gray-100">
+              <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 border border-gray-100">
                 <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
                   <Headphones className="w-7 h-7 text-purple-600" />
                 </div>
@@ -118,10 +120,10 @@ export default function Home() {
       {/* Pricing Section */}
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="backdrop-blur-md bg-white/95 rounded-3xl p-8 md:p-12 shadow-2xl">
+          <div className="content-section p-8 md:p-12">
             <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-16">Affordable Plans</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="border-2 border-blue-200 rounded-2xl p-8 text-center hover:border-blue-400 transition-all duration-300 hover:transform hover:scale-105 bg-white shadow-lg">
+              <div className="border-2 border-blue-200 rounded-2xl p-8 text-center hover:border-blue-400 transition-all duration-300 bg-white shadow-lg">
                 <h3 className="text-2xl font-bold text-blue-600 mb-4">Web Hosting</h3>
                 <div className="text-4xl font-bold text-gray-800 mb-6">KSh 999<span className="text-lg text-gray-600">/month</span></div>
                 <ul className="text-gray-600 space-y-3 mb-8">
@@ -131,12 +133,12 @@ export default function Home() {
                   <li className="py-1">Professional Email Accounts</li>
                   <li className="py-1">One-Click WordPress Install</li>
                 </ul>
-                <button className="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 w-full font-semibold hover:scale-105">
+                <button className="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 w-full font-semibold">
                   Get Started
                 </button>
               </div>
 
-              <div className="border-2 border-green-200 rounded-2xl p-8 text-center hover:border-green-400 transition-all duration-300 hover:transform hover:scale-105 bg-white shadow-lg">
+              <div className="border-2 border-green-200 rounded-2xl p-8 text-center hover:border-green-400 transition-all duration-300 bg-white shadow-lg">
                 <h3 className="text-2xl font-bold text-green-600 mb-4">Downloader Pro</h3>
                 <div className="text-4xl font-bold text-gray-800 mb-6">KSh 499<span className="text-lg text-gray-600">/month</span></div>
                 <ul className="text-gray-600 space-y-3 mb-8">
@@ -146,7 +148,7 @@ export default function Home() {
                   <li className="py-1">No Watermarks</li>
                   <li className="py-1">Priority Processing</li>
                 </ul>
-                <button className="bg-green-600 text-white px-8 py-4 rounded-lg hover:bg-green-700 transition-all duration-300 w-full font-semibold hover:scale-105">
+                <button className="bg-green-600 text-white px-8 py-4 rounded-lg hover:bg-green-700 transition-all duration-300 w-full font-semibold">
                   Try Now
                 </button>
               </div>
@@ -158,22 +160,22 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="backdrop-blur-md bg-white/10 rounded-3xl p-12 text-center border border-white/20">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Transform Your Digital Presence?</h2>
-            <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto leading-relaxed">
+          <div className="content-section p-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Ready to Transform Your Digital Presence?</h2>
+            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
               Join thousands of satisfied customers across Kenya who trust OBED TECH for their digital solutions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 font-semibold hover:scale-105">
+              <button className="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 font-semibold">
                 Start Your Journey
               </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-gray-900 transition-all duration-300 font-semibold hover:scale-105">
+              <button className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg hover:border-blue-500 hover:text-blue-600 transition-all duration-300 font-semibold">
                 Contact Sales
               </button>
             </div>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
