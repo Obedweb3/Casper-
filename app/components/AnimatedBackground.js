@@ -1,94 +1,29 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-
 export default function AnimatedBackground() {
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    let animationFrameId;
-
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    // Tech elements
-    const elements = [
-      { type: 'code', text: '</>', x: 0, y: 0, speed: 0.5, size: 20 },
-      { type: 'code', text: '{ }', x: 0, y: 0, speed: 0.3, size: 18 },
-      { type: 'binary', text: '0101', x: 0, y: 0, speed: 0.4, size: 16 },
-      { type: 'binary', text: '1010', x: 0, y: 0, speed: 0.6, size: 14 },
-      { type: 'hex', text: '#0xFF', x: 0, y: 0, speed: 0.7, size: 16 },
-    ];
-
-    // Initialize elements
-    elements.forEach(element => {
-      element.x = Math.random() * canvas.width;
-      element.y = Math.random() * canvas.height;
-    });
-
-    const draw = () => {
-      // Clear canvas with slight transparency for trail effect
-      ctx.fillStyle = 'rgba(10, 10, 30, 0.05)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // Draw tech elements
-      elements.forEach(element => {
-        let color;
-        switch (element.type) {
-          case 'code':
-            color = 'rgba(100, 200, 255, 0.4)';
-            break;
-          case 'binary':
-            color = 'rgba(100, 255, 200, 0.3)';
-            break;
-          case 'hex':
-            color = 'rgba(255, 100, 255, 0.3)';
-            break;
-          default:
-            color = 'rgba(255, 255, 255, 0.3)';
-        }
-
-        ctx.fillStyle = color;
-        ctx.font = `${element.size}px 'Courier New', monospace`;
-        ctx.fillText(element.text, element.x, element.y);
-
-        // Move elements
-        element.x += element.speed;
-        element.y += Math.sin(Date.now() * 0.001 + element.x * 0.01) * 0.5;
-
-        // Reset if off screen
-        if (element.x > canvas.width + 50) {
-          element.x = -50;
-          element.y = Math.random() * canvas.height;
-        }
-      });
-
-      animationFrameId = requestAnimationFrame(draw);
-    };
-
-    draw();
-
-    return () => {
-      window.removeEventListener('resize', resizeCanvas);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
-
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-      <canvas
-        ref={canvasRef}
-        className="w-full h-full"
-      />
+      {/* Animated grid pattern */}
+      <div className="absolute inset-0 opacity-[0.03]">
+        <div 
+          className="absolute inset-0 bg-[linear-gradient(rgba(120,119,198,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(120,119,198,0.3)_1px,transparent_1px)] bg-[size:64px_64px] animate-pulse"
+          style={{
+            animationDuration: '20s'
+          }}
+        />
+      </div>
+      
+      {/* Floating tech elements */}
+      <div className="absolute top-1/4 left-10 text-blue-400/20 text-2xl animate-float-slow">{'{ }'}</div>
+      <div className="absolute top-10 right-20 text-green-400/20 text-xl animate-float-medium">{'</>'}</div>
+      <div className="absolute bottom-1/3 left-20 text-purple-400/20 text-lg animate-float-fast">0101</div>
+      <div className="absolute top-1/2 right-10 text-cyan-400/20 text-xl animate-float-slow">1010</div>
+      <div className="absolute bottom-20 right-1/4 text-yellow-400/20 text-lg animate-float-medium">#0xFF</div>
+      
+      {/* Moving dots */}
+      <div className="absolute top-1/3 left-1/4 w-1 h-1 bg-blue-400/30 rounded-full animate-pulse" />
+      <div className="absolute top-2/3 right-1/3 w-1 h-1 bg-purple-400/30 rounded-full animate-bounce" />
+      <div className="absolute bottom-1/4 left-1/2 w-1 h-1 bg-cyan-400/30 rounded-full animate-ping" />
     </div>
   );
 }
