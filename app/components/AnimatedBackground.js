@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef } from 'react';
 
 export default function AnimatedBackground() {
@@ -5,6 +7,8 @@ export default function AnimatedBackground() {
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
+
     const ctx = canvas.getContext('2d');
     let animationFrameId;
 
@@ -13,6 +17,7 @@ export default function AnimatedBackground() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
+    
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
