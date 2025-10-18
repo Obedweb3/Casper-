@@ -7,8 +7,11 @@ export default function Navigation() {
     <nav>
       <ul>
         <li><Link href="/">Home</Link></li>
-        <li><Link href="/webhosting">Web Hosting Solutions</Link></li>
-        <li><Link href="/youtube">Social Media Downloaders</Link></li>
+        <li><Link href="/hosting">Web Hosting</Link></li>
+        <li><Link href="/downloader">Social Downloader</Link></li>
+        <li><Link href="/pricing">Pricing</Link></li>
+        <li><Link href="/about">About Us</Link></li>
+        <li><Link href="/contact">Contact</Link></li>
       </ul>
     </nav>
   );
